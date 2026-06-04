@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sushi Barak - Experiencia Sushi Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Sushi Barak - Más Sabor, Mejor Calidad, Al Mejor Precio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -19,10 +19,12 @@
             --dark-gray: #2a2a2a;
             --japanese-red: #c41e3a;
             --deep-red: #8b0000;
+            --logo-red: #cc2200;
             --gold: #d4af37;
             --soft-gold: #f0d68a;
             --white: #ffffff;
             --light-gray: #f5f5f5;
+            --cream: #f5f0e8;
         }
 
         body {
@@ -37,17 +39,17 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.97);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 1rem 5%;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.5rem 5%;
+            border-bottom: 1px solid rgba(196, 30, 58, 0.3);
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            padding: 0.5rem 5%;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            padding: 0.3rem 5%;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
         }
 
         .nav-container {
@@ -58,40 +60,32 @@
             margin: 0 auto;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--white);
+        .logo-container {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: 2px;
         }
 
-        .logo span {
-            color: var(--japanese-red);
-        }
-
-        .logo-sub {
-            font-family: 'Noto Sans JP', sans-serif;
-            font-size: 0.7rem;
-            color: var(--gold);
-            display: block;
-            letter-spacing: 3px;
+        .logo-container img {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
         }
 
         .nav-links a {
             color: var(--white);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             transition: color 0.3s ease;
             position: relative;
         }
@@ -115,19 +109,20 @@
             color: var(--gold);
         }
 
-        .btn-reserve {
+        .btn-order {
             background: var(--japanese-red);
             color: var(--white);
-            padding: 0.8rem 1.8rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
             border: 2px solid var(--japanese-red);
         }
 
-        .btn-reserve:hover {
+        .btn-order:hover {
             background: transparent;
             color: var(--japanese-red);
             transform: scale(1.05);
@@ -141,23 +136,25 @@
         }
 
         .menu-toggle span {
-            width: 25px;
-            height: 2px;
+            width: 28px;
+            height: 3px;
             background: var(--white);
+            border-radius: 2px;
             transition: all 0.3s ease;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.9)),
-                        url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1920&q=80') center/cover;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95)),
+                        url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px;
         }
 
         .hero::before {
@@ -167,46 +164,67 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, var(--black) 100%);
-            opacity: 0.5;
+            background: radial-gradient(ellipse at center, transparent 0%, var(--black) 80%);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
-            padding: 0 2rem;
+            padding: 2rem;
+        }
+
+        .hero-logo-container {
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero-logo {
+            max-width: 550px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
         }
 
         .hero-badge {
             display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid var(--gold);
-            padding: 0.5rem 1.5rem;
+            background: rgba(196, 30, 58, 0.2);
+            border: 1px solid var(--japanese-red);
+            padding: 0.6rem 2rem;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gold);
-            margin-bottom: 2rem;
-            letter-spacing: 2px;
-            animation: fadeInDown 1s ease;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            font-weight: 600;
+            animation: fadeInDown 1s ease 0.2s both;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            animation: fadeInUp 1s ease 0.3s both;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .hero h1 span {
             color: var(--japanese-red);
-            display: block;
+        }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 300;
             color: var(--light-gray);
             margin-bottom: 2.5rem;
@@ -218,7 +236,8 @@
             display: flex;
             gap: 1.5rem;
             justify-content: center;
-            animation: fadeInUp 1s ease 0.9s both;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.8s both;
         }
 
         .btn-primary {
@@ -227,13 +246,14 @@
             padding: 1rem 2.5rem;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             transition: all 0.3s ease;
             border: 2px solid var(--japanese-red);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            letter-spacing: 1px;
         }
 
         .btn-primary:hover {
@@ -248,13 +268,14 @@
             padding: 1rem 2.5rem;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1rem;
             transition: all 0.3s ease;
             border: 2px solid var(--gold);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            letter-spacing: 1px;
         }
 
         .btn-secondary:hover {
@@ -263,10 +284,32 @@
             transform: translateY(-3px);
         }
 
+        /* Pickup Banner */
+        .pickup-banner {
+            background: linear-gradient(135deg, var(--japanese-red), var(--deep-red));
+            padding: 1.5rem 5%;
+            text-align: center;
+        }
+
+        .pickup-banner p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pickup-banner i {
+            font-size: 1.3rem;
+        }
+
         /* Social Proof Section */
         .social-proof {
             background: var(--charcoal);
-            padding: 3rem 5%;
+            padding: 3.5rem 5%;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
@@ -285,7 +328,7 @@
         }
 
         .proof-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--gold);
             margin-bottom: 0.5rem;
         }
@@ -299,21 +342,33 @@
         }
 
         .proof-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--light-gray);
             letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .stars {
             color: var(--gold);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
 
-        /* Featured Menu Section */
-        .featured-menu {
+        /* Promotions Section */
+        .promotions {
             padding: 6rem 5%;
             background: var(--black);
+            position: relative;
+        }
+
+        .promotions::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--japanese-red), transparent);
         }
 
         .section-header {
@@ -323,11 +378,12 @@
 
         .section-tag {
             color: var(--japanese-red);
-            font-size: 0.9rem;
-            letter-spacing: 3px;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 1rem;
             display: block;
+            font-weight: 700;
         }
 
         .section-title {
@@ -335,6 +391,10 @@
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            color: var(--japanese-red);
         }
 
         .section-subtitle {
@@ -345,16 +405,109 @@
             margin: 0 auto;
         }
 
+        .promo-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .promo-card {
+            background: linear-gradient(145deg, var(--charcoal), var(--dark-gray));
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid rgba(196, 30, 58, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--japanese-red);
+        }
+
+        .promo-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--japanese-red);
+            box-shadow: 0 20px 50px rgba(196, 30, 58, 0.3);
+        }
+
+        .promo-card.featured {
+            border-color: var(--gold);
+            background: linear-gradient(145deg, #2a1a1a, var(--charcoal));
+        }
+
+        .promo-card.featured::before {
+            background: var(--gold);
+        }
+
+        .promo-cortes {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .promo-cortes-label {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-sabores {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .promo-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--japanese-red);
+            background: rgba(196, 30, 58, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .promo-card.featured .promo-price {
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            padding: 6rem 5%;
+            background: var(--charcoal);
+        }
+
+        .menu-section.alt-bg {
+            background: var(--black);
+        }
+
         .menu-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
         .menu-card {
-            background: var(--charcoal);
+            background: var(--dark-gray);
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.4s ease;
@@ -367,15 +520,34 @@
             border-color: var(--gold);
         }
 
+        .menu-card-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
         .menu-card-img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
 
         .menu-card:hover .menu-card-img {
             transform: scale(1.1);
+        }
+
+        .menu-card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--japanese-red);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .menu-card-content {
@@ -384,22 +556,23 @@
 
         .menu-card-category {
             color: var(--japanese-red);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .menu-card-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .menu-card-desc {
             color: var(--light-gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.6;
             margin-bottom: 1rem;
         }
@@ -412,7 +585,7 @@
 
         .menu-card-price {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--gold);
             font-weight: 700;
         }
@@ -420,11 +593,13 @@
         .menu-card-btn {
             background: var(--japanese-red);
             color: var(--white);
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.3rem;
             border-radius: 20px;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            font-weight: 700;
             transition: all 0.3s ease;
+            letter-spacing: 1px;
         }
 
         .menu-card-btn:hover {
@@ -432,60 +607,129 @@
             color: var(--black);
         }
 
-        /* Gallery Section */
-        .gallery {
+        /* Sabores Section */
+        .sabores-section {
+            padding: 6rem 5%;
+            background: var(--black);
+        }
+
+        .sabores-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .sabor-card {
+            background: var(--charcoal);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .sabor-card:hover {
+            border-color: var(--japanese-red);
+            transform: translateX(5px);
+        }
+
+        .sabor-number {
+            width: 40px;
+            height: 40px;
+            background: var(--japanese-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .sabor-card.caliente .sabor-number {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .sabor-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .sabor-info p {
+            color: var(--light-gray);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .sabor-type {
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Gohan & Burger Section */
+        .gohan-section {
             padding: 6rem 5%;
             background: var(--charcoal);
         }
 
-        .gallery-grid {
-            max-width: 1400px;
+        .gohan-grid {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .gallery-item {
-            position: relative;
+        .gohan-card {
+            background: var(--dark-gray);
+            border-radius: 15px;
             overflow: hidden;
-            border-radius: 10px;
-            aspect-ratio: 1;
-            cursor: pointer;
+            text-align: center;
+            border: 2px solid rgba(196, 30, 58, 0.2);
+            transition: all 0.4s ease;
         }
 
-        .gallery-item img {
+        .gohan-card:hover {
+            border-color: var(--japanese-red);
+            transform: translateY(-5px);
+        }
+
+        .gohan-card-img {
             width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.2);
+        .gohan-card-content {
+            padding: 1.5rem;
         }
 
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(196, 30, 58, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .gohan-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
+        .gohan-card-desc {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
-        .gallery-overlay i {
+        .gohan-card-price {
+            font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--white);
+            color: var(--japanese-red);
+            font-weight: 700;
         }
 
         /* Testimonials Section */
@@ -569,7 +813,7 @@
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
         }
 
@@ -583,6 +827,7 @@
             justify-content: center;
             font-size: 1.2rem;
             color: var(--white);
+            flex-shrink: 0;
         }
 
         .contact-details h4 {
@@ -593,13 +838,26 @@
         .contact-details p {
             color: var(--light-gray);
             font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .contact-form {
+        .order-form {
             background: var(--dark-gray);
             padding: 2.5rem;
             border-radius: 15px;
             border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .order-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-form .form-subtitle {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
 
         .form-group {
@@ -609,15 +867,17 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--light-gray);
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.9rem 1rem;
             background: var(--charcoal);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 8px;
@@ -642,9 +902,11 @@
             border: none;
             border-radius: 30px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .form-submit:hover {
@@ -656,7 +918,7 @@
         footer {
             background: var(--black);
             padding: 4rem 5% 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 1px solid rgba(196, 30, 58, 0.3);
         }
 
         .footer-content {
@@ -668,16 +930,15 @@
             margin-bottom: 3rem;
         }
 
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--white);
+        .footer-logo-container {
             margin-bottom: 1rem;
         }
 
-        .footer-logo span {
-            color: var(--japanese-red);
+        .footer-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         .footer-desc {
@@ -693,8 +954,8 @@
         }
 
         .footer-social a {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             background: var(--charcoal);
             border-radius: 50%;
             display: flex;
@@ -713,9 +974,11 @@
         }
 
         .footer-links h4 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 1.5rem;
             color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .footer-links ul {
@@ -779,7 +1042,8 @@
                 flex-direction: column;
                 padding: 2rem;
                 transition: left 0.3s ease;
-                border-top: 1px solid rgba(212, 175, 55, 0.2);
+                border-top: 1px solid rgba(196, 30, 58, 0.3);
+                gap: 1.5rem;
             }
 
             .nav-links.active {
@@ -790,12 +1054,20 @@
                 display: flex;
             }
 
+            .hero-logo {
+                max-width: 400px;
+            }
+
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .hero-buttons {
@@ -810,11 +1082,31 @@
             .section-title {
                 font-size: 2.5rem;
             }
+
+            .promo-cortes {
+                font-size: 2.5rem;
+            }
+
+            .footer-logo {
+                max-width: 250px;
+            }
         }
 
         @media (max-width: 600px) {
+            .logo-container img {
+                height: 50px;
+            }
+
+            .hero-logo {
+                max-width: 300px;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 1.6rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
             }
 
             .proof-container {
@@ -822,9 +1114,18 @@
             }
 
             .menu-grid,
-            .gallery-grid,
+            .sabores-grid,
+            .gohan-grid,
             .testimonial-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .promo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-logo {
+                max-width: 200px;
             }
         }
     </style>
@@ -833,17 +1134,16 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                SUSHI <span>BARAK</span>
-                <span class="logo-sub">寿司バラク</span>
+            <a href="#" class="logo-container">
+                <img src="/img/logo.png" alt="Sushi Barak Logo">
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#promos">Promos</a></li>
                 <li><a href="#menu">Menú</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#sabores">Sabores</a></li>
                 <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#reservar" class="btn-reserve">Reservar</a></li>
+                <li><a href="#pedido" class="btn-order">Hacer Pedido</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
@@ -856,24 +1156,37 @@
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <div class="hero-badge">✦ EXPERIENCIA SUSHI PREMIUM ✦</div>
+            <div class="hero-logo-container">
+                <img src="/img/logo.png" alt="Sushi Barak" class="hero-logo">
+            </div>
+            <div class="hero-badge">✦ SUSHI ARTESANAL PREMIUM ✦</div>
+            <p class="hero-tagline">Más sabor, Mejor calidad, al mejor precio!</p>
             <h1>
-                Auténtico Sabor
-                <span>Japonés</span>
+                El Arte del <span>Sushi</span> Hecho con Pasión
             </h1>
             <p class="hero-subtitle">
-                Más sabor, mejor calidad, al mejor precio. Descubre el arte del sushi artesanal con ingredientes frescos y técnicas tradicionales.
+                Rolls artesanales, gohan bowls y burger sushi preparados con ingredientes frescos. 
+                Retira tu pedido en nuestro local en San Miguel.
             </p>
             <div class="hero-buttons">
-                <a href="#menu" class="btn-primary">
-                    <i class="fas fa-utensils"></i> Ver Menú
+                <a href="#promos" class="btn-primary">
+                    <i class="fas fa-fire"></i> Ver Promociones
                 </a>
-                <a href="#reservar" class="btn-secondary">
-                    <i class="fas fa-calendar"></i> Reservar Mesa
+                <a href="#pedido" class="btn-secondary">
+                    <i class="fas fa-shopping-bag"></i> Hacer Pedido
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Pickup Banner -->
+    <div class="pickup-banner">
+        <p>
+            <i class="fas fa-store"></i>
+            RETIRO EN LOCAL — Octava Avenida 1202, Local 3, San Miguel
+            <i class="fas fa-store"></i>
+        </p>
+    </div>
 
     <!-- Social Proof Section -->
     <section class="social-proof">
@@ -887,14 +1200,14 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <div class="proof-number">5.0</div>
-                <div class="proof-label">Valoración Promedio</div>
+                <div class="proof-label">Valoración Google</div>
             </div>
             <div class="proof-item">
                 <div class="proof-icon">
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="proof-number">2,500+</div>
-                <div class="proof-label">Clientes Satisfechos</div>
+                <div class="proof-label">Clientes Felices</div>
             </div>
             <div class="proof-item">
                 <div class="proof-icon">
@@ -913,137 +1226,414 @@
         </div>
     </section>
 
-    <!-- Featured Menu Section -->
-    <section class="featured-menu" id="menu">
+    <!-- Promotions Section -->
+    <section class="promotions" id="promos">
         <div class="section-header">
-            <span class="section-tag">Nuestro Menú</span>
-            <h2 class="section-title">Especialidades de la Casa</h2>
+            <span class="section-tag">Ofertas Especiales</span>
+            <h2 class="section-title">Promociones <span>Barak</span></h2>
             <p class="section-subtitle">
-                Descubre nuestra selección de rolls artesanales preparados con los ingredientes más frescos y técnicas tradicionales japonesas
+                Arma tu promo favorita con los sabores que más te gusten. Más cortes, más sabor, mejor precio.
+            </p>
+        </div>
+        <div class="promo-grid">
+            <div class="promo-card">
+                <div class="promo-cortes">24</div>
+                <div class="promo-cortes-label">CORTES</div>
+                <div class="promo-sabores">2 SABORES</div>
+                <div class="promo-price">$7.990</div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-cortes">36</div>
+                <div class="promo-cortes-label">CORTES</div>
+                <div class="promo-sabores">3 SABORES</div>
+                <div class="promo-price">$11.990</div>
+            </div>
+            <div class="promo-card featured">
+                <div class="promo-cortes">48</div>
+                <div class="promo-cortes-label">CORTES</div>
+                <div class="promo-sabores">4 SABORES</div>
+                <div class="promo-price">$15.490</div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-cortes">60</div>
+                <div class="promo-cortes-label">CORTES</div>
+                <div class="promo-sabores">5 SABORES</div>
+                <div class="promo-price">$18.490</div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-cortes">72</div>
+                <div class="promo-cortes-label">CORTES</div>
+                <div class="promo-sabores">6 SABORES</div>
+                <div class="promo-price">$21.490</div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-cortes">84</div>
+                <div class="promo-cortes-label">CORTES</div>
+                <div class="promo-sabores">7 SABORES</div>
+                <div class="promo-price">$24.990</div>
+            </div>
+            <div class="promo-card featured">
+                <div class="promo-cortes">96</div>
+                <div class="promo-cortes-label">CORTES</div>
+                <div class="promo-sabores">8 SABORES</div>
+                <div class="promo-price">$27.990</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gohan & Burger Section -->
+    <section class="gohan-section" id="menu">
+        <div class="section-header">
+            <span class="section-tag">Burger & Gohan</span>
+            <h2 class="section-title">Gohan & <span>Burger Sushi</span></h2>
+            <p class="section-subtitle">
+                Bowls de arroz con ingredientes frescos y nuestro exclusivo Burger Sushi
+            </p>
+        </div>
+        <div class="gohan-grid">
+            <div class="gohan-card">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="Gohan Simple" class="gohan-card-img">
+                <div class="gohan-card-content">
+                    <h3 class="gohan-card-title">Gohan Simple</h3>
+                    <p class="gohan-card-desc">Base de arroz, palta + 2 ingredientes a elección</p>
+                    <div class="gohan-card-price">$4.990</div>
+                </div>
+            </div>
+            <div class="gohan-card">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Gohan Especial" class="gohan-card-img">
+                <div class="gohan-card-content">
+                    <h3 class="gohan-card-title">Gohan Especial</h3>
+                    <p class="gohan-card-desc">Base de arroz, palta + 4 ingredientes a elección</p>
+                    <div class="gohan-card-price">$5.990</div>
+                </div>
+            </div>
+            <div class="gohan-card">
+                <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?w=600&q=80" alt="Burger Sushi" class="gohan-card-img">
+                <div class="gohan-card-content">
+                    <h3 class="gohan-card-title">Burger Sushi</h3>
+                    <p class="gohan-card-desc">Base de arroz, palta, cebollín + 2 ingredientes a elección</p>
+                    <div class="gohan-card-price">$5.990</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rolls Especiales Section -->
+    <section class="menu-section" id="rolls">
+        <div class="section-header">
+            <span class="section-tag">Especialidades</span>
+            <h2 class="section-title">Rolls <span>Especiales</span></h2>
+            <p class="section-subtitle">
+                Nuestros rolls signature preparados con técnicas únicas y los mejores ingredientes
             </p>
         </div>
         <div class="menu-grid">
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80" alt="Tory Tempura" class="menu-card-img">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80" alt="Tory Tempura" class="menu-card-img">
+                    <div class="menu-card-badge">POPULAR</div>
+                </div>
                 <div class="menu-card-content">
                     <div class="menu-card-category">Rolls Especiales</div>
                     <h3 class="menu-card-title">Tory Tempura</h3>
-                    <p class="menu-card-desc">Camarón apanado, queso crema, cebollín, envuelto en pollo apanado</p>
+                    <p class="menu-card-desc">Camarón, queso crema, cebollín. Envuelto en pollo apanado</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$6.990</span>
-                        <a href="#" class="menu-card-btn">Ordenar</a>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
                     </div>
                 </div>
             </div>
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80" alt="Sake Furay Maki" class="menu-card-img">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80" alt="Sake Furay Maki" class="menu-card-img">
+                </div>
                 <div class="menu-card-content">
                     <div class="menu-card-category">Rolls Especiales</div>
                     <h3 class="menu-card-title">Sake Furay Maki</h3>
-                    <p class="menu-card-desc">Camarón, queso crema, cebollín, envuelto en salmón apanado</p>
+                    <p class="menu-card-desc">Camarón, queso crema, cebollín. Envuelto en salmón apanado</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$6.990</span>
-                        <a href="#" class="menu-card-btn">Ordenar</a>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
                     </div>
                 </div>
             </div>
             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80" alt="Gohan Especial" class="menu-card-img">
-                <div class="menu-card-content">
-                    <div class="menu-card-category">Burger & Gohan</div>
-                    <h3 class="menu-card-title">Gohan Especial</h3>
-                    <p class="menu-card-desc">Base de arroz, palta + 4 ingredientes a elección</p>
-                    <div class="menu-card-footer">
-                        <span class="menu-card-price">$5.990</span>
-                        <a href="#" class="menu-card-btn">Ordenar</a>
-                    </div>
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80" alt="Banana Tempura" class="menu-card-img">
                 </div>
-            </div>
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600&q=80" alt="Ceviche Rolls" class="menu-card-img">
                 <div class="menu-card-content">
-                    <div class="menu-card-category">Rolls Nikkei</div>
-                    <h3 class="menu-card-title">Ceviche Rolls</h3>
-                    <p class="menu-card-desc">Camarón apanado, palta cubierto con ceviche fresco</p>
+                    <div class="menu-card-category">Rolls Especiales</div>
+                    <h3 class="menu-card-title">Banana Tempura</h3>
+                    <p class="menu-card-desc">Pollo teriyaki, queso crema. Envuelto en plátano apanado</p>
                     <div class="menu-card-footer">
-                        <span class="menu-card-price">$7.990</span>
-                        <a href="#" class="menu-card-btn">Ordenar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=600&q=80" alt="Promoción Barak" class="menu-card-img">
-                <div class="menu-card-content">
-                    <div class="menu-card-category">Promociones</div>
-                    <h3 class="menu-card-title">Promo 48 Cortes</h3>
-                    <p class="menu-card-desc">48 cortes, 4 sabores a elección. Perfecto para compartir</p>
-                    <div class="menu-card-footer">
-                        <span class="menu-card-price">$15.490</span>
-                        <a href="#" class="menu-card-btn">Ordenar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=80" alt="Hand Rolls" class="menu-card-img">
-                <div class="menu-card-content">
-                    <div class="menu-card-category">Hand Rolls</div>
-                    <h3 class="menu-card-title">Hand Rolls Premium</h3>
-                    <p class="menu-card-desc">Salmón ahumado, camarón apanado, palmito y más</p>
-                    <div class="menu-card-footer">
-                        <span class="menu-card-price">$3.500</span>
-                        <a href="#" class="menu-card-btn">Ordenar</a>
+                        <span class="menu-card-price">$6.990</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="galeria">
+    <!-- Rolls Envueltos Section -->
+    <section class="menu-section alt-bg">
         <div class="section-header">
-            <span class="section-tag">Galería</span>
-            <h2 class="section-title">Nuestros Platos</h2>
+            <span class="section-tag">Especialidades</span>
+            <h2 class="section-title">Rolls <span>Envueltos</span></h2>
             <p class="section-subtitle">
-                Una muestra visual de nuestra pasión por el sushi artesanal
+                Rolls envueltos en queso crema o salmón fresco
             </p>
         </div>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80" alt="Sushi 1">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600&q=80" alt="Ebi Furay" class="menu-card-img">
+                    <div class="menu-card-badge">QUESO CREMA</div>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Rolls Envueltos en Queso Crema</div>
+                    <h3 class="menu-card-title">Ebi Furay</h3>
+                    <p class="menu-card-desc">Camarón apanado, cebollín, palta</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$6.990</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80" alt="Sushi 2">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=600&q=80" alt="Ebi Sake" class="menu-card-img">
+                    <div class="menu-card-badge">QUESO CREMA</div>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Rolls Envueltos en Queso Crema</div>
+                    <h3 class="menu-card-title">Ebi Sake</h3>
+                    <p class="menu-card-desc">Salmón, camarón, palta</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$6.990</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=600&q=80" alt="Sushi 3">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=80" alt="Tory Rolls" class="menu-card-img">
+                    <div class="menu-card-badge">SALMÓN</div>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Rolls Envueltos en Salmón</div>
+                    <h3 class="menu-card-title">Tory Rolls</h3>
+                    <p class="menu-card-desc">Pollo teriyaki, queso crema, palta</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$6.990</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=600&q=80" alt="Sushi 4">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
+        </div>
+    </section>
+
+    <!-- Rolls Nikkei & Sin Arroz -->
+    <section class="menu-section">
+        <div class="section-header">
+            <span class="section-tag">Especialidades</span>
+            <h2 class="section-title">Rolls <span>Nikkei</span> & Sin Arroz</h2>
+            <p class="section-subtitle">
+                Fusión nikkei y opciones sin arroz para todos los gustos
+            </p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1534482421-64566f976cfa?w=600&q=80" alt="Ceviche Rolls" class="menu-card-img">
+                    <div class="menu-card-badge">NIKKEI</div>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Rolls Nikkei</div>
+                    <h3 class="menu-card-title">Ceviche Rolls</h3>
+                    <p class="menu-card-desc">Camarón apanado, palta cubierto con ceviche fresco</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$6.990</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=600&q=80" alt="Sushi 5">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1540648639573-8c848de23f0a?w=600&q=80" alt="Banana Rolls" class="menu-card-img">
+                    <div class="menu-card-badge">NIKKEI</div>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Rolls Nikkei</div>
+                    <h3 class="menu-card-title">Banana Rolls</h3>
+                    <p class="menu-card-desc">Pollo furay y palta. Envuelto en plátano maduro</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$6.990</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?w=600&q=80" alt="Sushi 6">
-                <div class="gallery-overlay">
-                    <i class="fas fa-expand"></i>
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?w=600&q=80" alt="Rolls Sin Arroz" class="menu-card-img">
+                    <div class="menu-card-badge">SIN ARROZ</div>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Rolls Sin Arroz</div>
+                    <h3 class="menu-card-title">4 Ingredientes a Elección</h3>
+                    <p class="menu-card-desc">Salmón, palta, queso crema, tempura en panko. Puede ser envuelto</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$6.990</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Hand Rolls Section -->
+    <section class="menu-section alt-bg">
+        <div class="section-header">
+            <span class="section-tag">Especialidades</span>
+            <h2 class="section-title">Hand <span>Rolls</span></h2>
+            <p class="section-subtitle">
+                Conos de alga nori rellenos con los mejores ingredientes
+            </p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&q=80" alt="Hand Rolls Clásicos" class="menu-card-img">
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Hand Rolls</div>
+                    <h3 class="menu-card-title">Hand Rolls Clásicos</h3>
+                    <p class="menu-card-desc">Pollo Teriyaki · Palmito · Champiñón · Pimentón Salteado · Kanikama</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$3.000</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-img-container">
+                    <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?w=600&q=80" alt="Hand Rolls Premium" class="menu-card-img">
+                    <div class="menu-card-badge">PREMIUM</div>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-category">Hand Rolls Premium</div>
+                    <h3 class="menu-card-title">Salmón & Camarón</h3>
+                    <p class="menu-card-desc">Salmón Ahumado · Camarón Apanado</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$3.500</span>
+                        <a href="#pedido" class="menu-card-btn">Pedir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sabores Section -->
+    <section class="sabores-section" id="sabores">
+        <div class="section-header">
+            <span class="section-tag">Personaliza tu Pedido</span>
+            <h2 class="section-title">Sabores a <span>Elección</span></h2>
+            <p class="section-subtitle">
+                Elige tus sabores favoritos para armar tu promoción perfecta
+            </p>
+        </div>
+        
+        <h3 style="text-align:center; font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:2rem; color:var(--gold);">Fríos</h3>
+        <div class="sabores-grid">
+            <div class="sabor-card">
+                <div class="sabor-number">1</div>
+                <div class="sabor-info">
+                    <h4>Camarón, Queso crema, Palta</h4>
+                    <p>Env. en palta</p>
+                </div>
+            </div>
+            <div class="sabor-card">
+                <div class="sabor-number">2</div>
+                <div class="sabor-info">
+                    <h4>Salmón ahumado, Queso crema, Palta</h4>
+                    <p>Env. en palta</p>
+                </div>
+            </div>
+            <div class="sabor-card">
+                <div class="sabor-number">3</div>
+                <div class="sabor-info">
+                    <h4>Pollo furay, Queso crema, Cebollín</h4>
+                    <p>Env. en palta</p>
+                </div>
+            </div>
+            <div class="sabor-card">
+                <div class="sabor-number">4</div>
+                <div class="sabor-info">
+                    <h4>Kanikama, Queso crema, Cebollín</h4>
+                    <p>Env. en sésamo</p>
+                </div>
+            </div>
+            <div class="sabor-card">
+                <div class="sabor-number">5</div>
+                <div class="sabor-info">
+                    <h4>Palmito, Queso crema, Palta</h4>
+                    <p>Env. en ciboulette</p>
+                </div>
+            </div>
+            <div class="sabor-card">
+                <div class="sabor-number">6</div>
+                <div class="sabor-info">
+                    <h4>Tomate, Queso crema, Albahaca</h4>
+                    <p>Env. en sésamo</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="text-align:center; font-family:'Playfair Display',serif; font-size:2rem; margin:3rem 0 2rem; color:var(--japanese-red);">Calientes</h3>
+        <div class="sabores-grid">
+            <div class="sabor-card caliente">
+                <div class="sabor-number">7</div>
+                <div class="sabor-info">
+                    <h4>Pollo teriyaki, Queso crema, Cebollín</h4>
+                    <p>Env. en tempura</p>
+                </div>
+            </div>
+            <div class="sabor-card caliente">
+                <div class="sabor-number">8</div>
+                <div class="sabor-info">
+                    <h4>Champiñón, Queso crema, Cebollín</h4>
+                    <p>Env. en tempura</p>
+                </div>
+            </div>
+            <div class="sabor-card caliente">
+                <div class="sabor-number">9</div>
+                <div class="sabor-info">
+                    <h4>Camarón, Queso crema, Cebollín</h4>
+                    <p>Env. en tempura</p>
+                </div>
+            </div>
+            <div class="sabor-card caliente">
+                <div class="sabor-number">10</div>
+                <div class="sabor-info">
+                    <h4>Pimentón salteado, Queso crema, Cebollín</h4>
+                    <p>Env. en tempura</p>
+                </div>
+            </div>
+            <div class="sabor-card caliente">
+                <div class="sabor-number">11</div>
+                <div class="sabor-info">
+                    <h4>Salmón ahumado, Queso crema, Cebollín</h4>
+                    <p>Env. en tempura</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width:800px; margin:3rem auto 0; background:var(--charcoal); padding:2rem; border-radius:15px; border:1px solid rgba(196,30,58,0.3);">
+            <h4 style="color:var(--gold); margin-bottom:1rem; font-size:1.1rem;"><i class="fas fa-info-circle"></i> Condiciones para repetir sabores 1 y 2:</h4>
+            <ul style="list-style:none; color:var(--light-gray); font-size:0.9rem; line-height:2;">
+                <li><i class="fas fa-check" style="color:var(--japanese-red); margin-right:0.5rem;"></i> <strong>24 Piezas:</strong> No se pueden repetir los sabores 1 y 2</li>
+                <li><i class="fas fa-check" style="color:var(--japanese-red); margin-right:0.5rem;"></i> <strong>36, 48, 60 y 72 Piezas:</strong> Puedes repetir los sabores 1 y 2 hasta 2 veces</li>
+                <li><i class="fas fa-check" style="color:var(--japanese-red); margin-right:0.5rem;"></i> <strong>84 y 96 Piezas:</strong> Puedes repetir los sabores 1 y 2 hasta 3 veces</li>
+            </ul>
         </div>
     </section>
 
@@ -1051,7 +1641,7 @@
     <section class="testimonials" id="testimonios">
         <div class="section-header">
             <span class="section-tag">Testimonios</span>
-            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <h2 class="section-title">Lo Que Dicen <span>Nuestros Clientes</span></h2>
             <p class="section-subtitle">
                 Experiencias reales de quienes han disfrutado nuestro sushi
             </p>
@@ -1072,7 +1662,7 @@
                     </div>
                 </div>
                 <p class="testimonial-text">
-                    "El mejor sushi que he probado en San Miguel. Los rolls especiales son increíbles, especialmente el Tory Tempura. ¡Volveré sin duda!"
+                    "El mejor sushi que he probado en San Miguel. Los rolls especiales son increíbles, especialmente el Tory Tempura. ¡Siempre vuelvo!"
                 </p>
             </div>
             <div class="testimonial-card">
@@ -1090,7 +1680,7 @@
                     </div>
                 </div>
                 <p class="testimonial-text">
-                    "Excelente calidad-precio. Las promociones son perfectas para compartir en familia. El delivery llegó rápido y todo estaba fresco."
+                    "Excelente calidad-precio. Las promociones de 48 y 72 cortes son perfectas para compartir en familia. Todo siempre fresco y bien preparado."
                 </p>
             </div>
             <div class="testimonial-card">
@@ -1108,7 +1698,7 @@
                     </div>
                 </div>
                 <p class="testimonial-text">
-                    "Los hand rolls son espectaculares. Se nota la dedicación en cada pieza. El ambiente es acogedor y el servicio es excelente."
+                    "Los hand rolls son espectaculares. Se nota la dedicación en cada pieza. El Gohan Especial es mi favorito, siempre pido el mismo."
                 </p>
             </div>
         </div>
@@ -1118,9 +1708,9 @@
     <section class="contact" id="contacto">
         <div class="section-header">
             <span class="section-tag">Contacto</span>
-            <h2 class="section-title">Reserva Tu Experiencia</h2>
+            <h2 class="section-title">Haz Tu <span>Pedido</span></h2>
             <p class="section-subtitle">
-                Contáctanos para reservar tu mesa o hacer tu pedido
+                Escríbenos por WhatsApp o completa el formulario para retirar en local
             </p>
         </div>
         <div class="contact-container">
@@ -1131,15 +1721,15 @@
                     </div>
                     <div class="contact-details">
                         <h4>Ubicación</h4>
-                        <p>Octava Avenida 1202, local 3<br>Esq primera transversal (Strip Center) San Miguel</p>
+                        <p>Octava Avenida 1202, Local 3<br>Esq. primera transversal (Strip Center)<br>San Miguel</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+                        <i class="fab fa-whatsapp"></i>
                     </div>
                     <div class="contact-details">
-                        <h4>Teléfono / WhatsApp</h4>
+                        <h4>WhatsApp</h4>
                         <p>+56 9 3218 9275</p>
                     </div>
                 </div>
@@ -1148,17 +1738,17 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="contact-details">
-                        <h4>Horario</h4>
+                        <h4>Horario de Atención</h4>
                         <p>Lunes a Domingo: 12:00 - 22:00</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">
-                        <i class="fas fa-motorcycle"></i>
+                        <i class="fas fa-store"></i>
                     </div>
                     <div class="contact-details">
-                        <h4>Delivery</h4>
-                        <p>Contamos con servicio de delivery disponible</p>
+                        <h4>Retiro en Local</h4>
+                        <p>Haz tu pedido y retira en nuestro local. Preparado fresco al momento.</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1171,40 +1761,45 @@
                     </div>
                 </div>
             </div>
-            <div class="contact-form" id="reservar">
-                <h3 style="margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">Reservar Mesa</h3>
+            <div class="order-form" id="pedido">
+                <h3>Hacer Pedido</h3>
+                <p class="form-subtitle">Completa el formulario y te contactaremos por WhatsApp</p>
                 <form>
                     <div class="form-group">
                         <label for="name">Nombre Completo</label>
                         <input type="text" id="name" placeholder="Tu nombre" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Teléfono</label>
+                        <label for="phone">Teléfono / WhatsApp</label>
                         <input type="tel" id="phone" placeholder="+56 9 XXXX XXXX" required>
                     </div>
                     <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <input type="date" id="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Hora</label>
-                        <input type="time" id="time" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="guests">Número de Personas</label>
-                        <select id="guests" required>
-                            <option value="">Seleccionar</option>
-                            <option value="1-2">1-2 personas</option>
-                            <option value="3-4">3-4 personas</option>
-                            <option value="5-6">5-6 personas</option>
-                            <option value="7+">7+ personas</option>
+                        <label for="order">Tipo de Pedido</label>
+                        <select id="order" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="promo24">Promo 24 cortes - $7.990</option>
+                            <option value="promo36">Promo 36 cortes - $11.990</option>
+                            <option value="promo48">Promo 48 cortes - $15.490</option>
+                            <option value="promo60">Promo 60 cortes - $18.490</option>
+                            <option value="promo72">Promo 72 cortes - $21.490</option>
+                            <option value="promo84">Promo 84 cortes - $24.990</option>
+                            <option value="promo96">Promo 96 cortes - $27.990</option>
+                            <option value="gohan-simple">Gohan Simple - $4.990</option>
+                            <option value="gohan-especial">Gohan Especial - $5.990</option>
+                            <option value="burger-sushi">Burger Sushi - $5.990</option>
+                            <option value="rolls-especiales">Rolls Especiales - $6.990</option>
+                            <option value="hand-rolls">Hand Rolls - $3.000 / $3.500</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="message">Mensaje (Opcional)</label>
-                        <textarea id="message" rows="3" placeholder="Alguna solicitud especial..."></textarea>
+                        <label for="flavors">Sabores a Elección</label>
+                        <textarea id="flavors" rows="3" placeholder="Indica los sabores que deseas (números del 1 al 11)..."></textarea>
                     </div>
-                    <button type="submit" class="form-submit">Confirmar Reserva</button>
+                    <div class="form-group">
+                        <label for="message">Observaciones</label>
+                        <textarea id="message" rows="2" placeholder="Alguna indicación especial..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Enviar Pedido por WhatsApp</button>
                 </form>
             </div>
         </div>
@@ -1214,48 +1809,52 @@
     <footer>
         <div class="footer-content">
             <div>
-                <div class="footer-logo">SUSHI <span>BARAK</span></div>
+                <div class="footer-logo-container">
+                    <img src="/img/logo.png" alt="Sushi Barak Logo" class="footer-logo">
+                </div>
                 <p class="footer-desc">
-                    Más sabor, mejor calidad, al mejor precio. Tu experiencia sushi premium en San Miguel.
+                    Más sabor, mejor calidad, al mejor precio. Sushi artesanal preparado con ingredientes frescos en San Miguel. Retira tu pedido en nuestro local.
                 </p>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://instagram.com/sushibarak" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/56932189275" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
                     <a href="#"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="footer-links">
                 <h4>Menú</h4>
                 <ul>
-                    <li><a href="#">Rolls Especiales</a></li>
-                    <li><a href="#">Promociones</a></li>
-                    <li><a href="#">Burger & Gohan</a></li>
+                    <li><a href="#promos">Promociones</a></li>
+                    <li><a href="#menu">Gohan & Burger Sushi</a></li>
+                    <li><a href="#rolls">Rolls Especiales</a></li>
+                    <li><a href="#sabores">Sabores a Elección</a></li>
                     <li><a href="#">Hand Rolls</a></li>
                     <li><a href="#">Rolls Nikkei</a></li>
+                    <li><a href="#">Rolls Sin Arroz</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Información</h4>
                 <ul>
                     <li><a href="#">Sobre Nosotros</a></li>
-                    <li><a href="#">Delivery</a></li>
-                    <li><a href="#">Reservas</a></li>
+                    <li><a href="#contacto">Cómo Pedir</a></li>
+                    <li><a href="#contacto">Ubicación</a></li>
                     <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Política de Privacidad</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Contacto</h4>
                 <ul>
-                    <li><a href="#">Octava Avenida 1202, San Miguel</a></li>
-                    <li><a href="#">+56 9 3218 9275</a></li>
-                    <li><a href="#">@sushibarak</a></li>
+                    <li><a href="#contacto">Octava Avenida 1202, Local 3</a></li>
+                    <li><a href="#contacto">San Miguel, Santiago</a></li>
+                    <li><a href="https://wa.me/56932189275">+56 9 3218 9275</a></li>
+                    <li><a href="https://instagram.com/sushibarak">@sushibarak</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Sushi Barak. Todos los derechos reservados. Diseñado con pasión por el sushi.</p>
+            <p>&copy; 2024 Sushi Barak. Todos los derechos reservados. | Más sabor, mejor calidad, al mejor precio.</p>
         </div>
     </footer>
 
@@ -1299,20 +1898,17 @@
             });
         });
 
-        // Form submission
+        // Form submission - redirect to WhatsApp
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('¡Reserva enviada con éxito! Te contactaremos pronto para confirmar.');
-            this.reset();
-        });
-
-        // Gallery lightbox effect
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                // Simple alert for demo - can be replaced with lightbox library
-                console.log('Gallery image clicked:', img.src);
-            });
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const order = document.getElementById('order').value;
+            const flavors = document.getElementById('flavors').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMsg = `¡Hola Sushi Barak! %0A%0A*Nombre:* ${name}%0A*Teléfono:* ${phone}%0A*Pedido:* ${order}%0A*Sabores:* ${flavors}%0A*Observaciones:* ${message}`;
+            window.open(`https://wa.me/56932189275?text=${whatsappMsg}`, '_blank');
         });
 
         // Intersection Observer for animations
@@ -1331,7 +1927,7 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.menu-card, .testimonial-card, .gallery-item').forEach(el => {
+        document.querySelectorAll('.menu-card, .testimonial-card, .promo-card, .gohan-card, .sabor-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
